@@ -1,0 +1,19 @@
+[00:00:01.089] Server  LOG      ✓ Ready in 739ms
+[00:00:07.855] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:00:10.944] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:00:30.252] Browser ERROR   Error fetching vehicles:  {"code":"permission-denied","name":"FirebaseError"}
+[00:00:30.252] Browser ERROR   Error fetching vehicles:  {"code":"permission-denied","name":"FirebaseError"}
+[00:00:30.252] Browser ERROR   Error fetching vehicles:  {"code":"permission-denied","name":"FirebaseError"}
+[00:00:30.252] Browser ERROR   Error fetching vehicles:  {"code":"permission-denied","name":"FirebaseError"}
+[00:00:30.252] Browser ERROR   Error fetching vehicles:  {"code":"permission-denied","name":"FirebaseError"}
+[00:00:30.252] Browser ERROR   Error fetching vehicles:  {"code":"permission-denied","name":"FirebaseError"}
+[00:00:30.252] Browser ERROR   Error fetching vehicles:  {"code":"permission-denied","name":"FirebaseError"}
+[00:23:36.215] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:23:40.385] Browser WARN    Detected `scroll-behavior: smooth` on the `<html>` element. To disable smooth scrolling during route transitions, add `data-scroll-behavior="smooth"` to your <html> element. Learn more: https://nextjs.org/docs/messages/missing-data-scroll-behavior
+[00:28:40.264] Browser ERROR   Error submitting inspection: {"errorDetails":[{"@type":"type.googleapis.com/google.rpc.Help","links":[{"description":"Learn more about Gemini API quotas","url":"https://ai.google.dev/gemini-api/docs/rate-limits"}]},{"@type":"type.googleapis.com/google.rpc.QuotaFailure","violations":[{"quotaDimensions":"[Object]","quotaId":"GenerateContentInputTokensPerModelPerMinute-FreeTier","quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_input_token_count"},{"quotaDimensions":"[Object]","quotaId":"GenerateRequestsPerMinutePerProjectPerModel-FreeTier","quotaMetric":"generativelanguage.googleapis.com/generate_content_free_tier_requests"}]},{"@type":"type.googleapis.com/google.rpc.RetryInfo","retryDelay":"55s"}],"status":429,"statusText":""}
+[00:28:40.729] Browser WARN    [2025-11-26T15:26:13.107Z]  @firebase/firestore: Firestore (12.6.0): WebChannelConnection RPC 'Listen' stream 0x3d927cce transport errored. Name: undefined Message: undefined
+[00:29:27.869] Server  LOG      ✓ Compiled in 101ms
+[00:30:01.720] Browser ERROR   Error submitting inspection: {"status":404,"statusText":""}
+[00:30:54.610] Server  LOG      ✓ Compiled in 42ms
+[00:31:10.077] Browser INFO    %cDownload the React DevTools for a better development experience: https://react.dev/link/react-devtools font-weight:bold
+[00:31:14.307] Browser ERROR   Error submitting inspection: {"status":404,"statusText":""}
