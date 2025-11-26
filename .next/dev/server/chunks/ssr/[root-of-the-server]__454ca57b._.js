@@ -176,7 +176,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2
 var __TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/lib/firebase.js [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$google$2f$generative$2d$ai$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/@google/generative-ai/dist/index.mjs [app-ssr] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__ = __turbopack_context__.i("[project]/node_modules/next/dist/client/app-dir/link.js [app-ssr] (ecmascript)");
-'use client';
+"use client";
 ;
 ;
 ;
@@ -186,8 +186,8 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 ;
 ;
-// Initialize Gemini
-const GEMINI_API_KEY = "AIzaSyALGEOqUvDmG1oAqsPbfIoqIvW739IykzM";
+// Initialize Gemini - API key from environment variable
+const GEMINI_API_KEY = ("TURBOPACK compile-time value", "AIzaSyCaF7HW0rCBzac7BOosXPSIQxO2UFmHgoM");
 const genAI = new __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$google$2f$generative$2d$ai$2f$dist$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["GoogleGenerativeAI"](GEMINI_API_KEY);
 const model = genAI.getGenerativeModel({
     model: "gemini-2.0-flash-exp"
@@ -195,27 +195,27 @@ const model = genAI.getGenerativeModel({
 function VehicleInspectionPage({ params }) {
     const { id: vehicleId } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["use"])(params);
     const searchParams = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useSearchParams"])();
-    const vehicleName = searchParams.get('name');
-    const vehiclePlate = searchParams.get('plate');
+    const vehicleName = searchParams.get("name");
+    const vehiclePlate = searchParams.get("plate");
     const router = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useRouter"])();
     const [user, setUser] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(null);
     const [loading, setLoading] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])(false);
-    const [loadingStep, setLoadingStep] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])('');
+    const [loadingStep, setLoadingStep] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])("");
     // Form State
     const [formData, setFormData] = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useState"])({
         vehicleId: vehicleId,
-        vehicleName: vehicleName || '',
-        licensePlate: vehiclePlate || '',
+        vehicleName: vehicleName || "",
+        licensePlate: vehiclePlate || "",
         sounds: {
             unusualEngineSound: false,
             soundTypes: [],
             brakingSound: {
                 exists: false,
-                description: ''
+                description: ""
             },
             turningSound: {
                 exists: false,
-                description: ''
+                description: ""
             }
         },
         vibrations: {
@@ -239,7 +239,7 @@ function VehicleInspectionPage({ params }) {
             reducedPower: false,
             pulling: {
                 exists: false,
-                direction: ''
+                direction: ""
             },
             gearShiftingDifficulty: false,
             engineStalling: false,
@@ -258,7 +258,7 @@ function VehicleInspectionPage({ params }) {
             unevenTyreWear: false,
             lowPressureOften: false,
             squeakyBrakes: false,
-            brakePedalFeel: 'normal'
+            brakePedalFeel: "normal"
         },
         electricalIssues: {
             dimHeadlights: false,
@@ -274,11 +274,11 @@ function VehicleInspectionPage({ params }) {
             lowBrakeFluid: false
         },
         serviceHistory: {
-            lastServiceDate: '',
-            lastOilChange: '',
-            lastBrakePadChange: '',
-            lastTyreChange: '',
-            lastBatteryChange: ''
+            lastServiceDate: "",
+            lastOilChange: "",
+            lastBrakePadChange: "",
+            lastTyreChange: "",
+            lastBatteryChange: ""
         },
         evSpecific: {
             isEV: false,
@@ -296,7 +296,7 @@ function VehicleInspectionPage({ params }) {
     (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["useEffect"])(()=>{
         const unsubscribe = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$auth$2f$dist$2f$node$2d$esm$2f$index$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["onAuthStateChanged"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["auth"], (currentUser)=>{
             if (!currentUser) {
-                router.push('/login');
+                router.push("/login");
             } else {
                 setUser(currentUser);
             }
@@ -408,14 +408,14 @@ function VehicleInspectionPage({ params }) {
         const result = await model.generateContent(prompt);
         const response = await result.response;
         const text = response.text();
-        const cleanedText = text.replace(/```json\n?/g, '').replace(/```\n?/g, '').trim();
+        const cleanedText = text.replace(/```json\n?/g, "").replace(/```\n?/g, "").trim();
         return JSON.parse(cleanedText);
     };
     const handleSubmit = async (e)=>{
         e.preventDefault();
         setLoading(true);
         try {
-            setLoadingStep('Uploading photos...');
+            setLoadingStep("Uploading photos...");
             const photoUrls = await uploadPhotosToStorage(vehicleId);
             const completeData = {
                 ...formData,
@@ -423,10 +423,10 @@ function VehicleInspectionPage({ params }) {
                 submittedAt: new Date().toISOString(),
                 userId: user.uid
             };
-            setLoadingStep('AI analyzing vehicle data...');
+            setLoadingStep("AI analyzing vehicle data...");
             const analysisResult = await analyzeVehicleWithGemini(completeData);
-            setLoadingStep('Saving report...');
-            const inspectionRef = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["addDoc"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["collection"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["db"], 'inspections'), {
+            setLoadingStep("Saving report...");
+            const inspectionRef = await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["addDoc"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["collection"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["db"], "inspections"), {
                 userId: user.uid,
                 vehicleId: vehicleId,
                 formData: completeData,
@@ -434,11 +434,11 @@ function VehicleInspectionPage({ params }) {
                 photos: photoUrls,
                 submittedAt: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["serverTimestamp"])(),
                 analyzedAt: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["serverTimestamp"])(),
-                status: 'completed',
+                status: "completed",
                 vehicleName: formData.vehicleName,
                 licensePlate: formData.licensePlate
             });
-            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["updateDoc"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["doc"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["db"], 'vehicles', vehicleId), {
+            await (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["updateDoc"])((0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["doc"])(__TURBOPACK__imported__module__$5b$project$5d2f$lib$2f$firebase$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["db"], "vehicles", vehicleId), {
                 lastInspection: (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f40$firebase$2f$firestore$2f$dist$2f$index$2e$node$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["serverTimestamp"])(),
                 lastInspectionId: inspectionRef.id,
                 lastHealthScore: analysisResult.overallHealthScore
@@ -446,10 +446,15 @@ function VehicleInspectionPage({ params }) {
             router.push(`/analysis/${inspectionRef.id}`);
         } catch (error) {
             console.error("Error submitting inspection:", error);
-            alert("An error occurred: " + error.message);
+            // Check for rate limit error (429)
+            if (error.message?.includes("429") || error.message?.includes("quota") || error.message?.includes("rate")) {
+                alert("⚠️ API Rate Limit Exceeded\n\nThe AI analysis service is temporarily unavailable due to high usage. Please try again in a few minutes.\n\nIf this persists, consider:\n1. Waiting 1-2 minutes before retrying\n2. Checking your Gemini API quota at ai.google.dev");
+            } else {
+                alert("An error occurred: " + error.message);
+            }
         } finally{
             setLoading(false);
-            setLoadingStep('');
+            setLoadingStep("");
         }
     };
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -464,8 +469,8 @@ function VehicleInspectionPage({ params }) {
                             className: "overlay"
                         }, void 0, false, {
                             fileName: "[project]/app/vehicle/[id]/page.js",
-                            lineNumber: 292,
-                            columnNumber: 11
+                            lineNumber: 321,
+                            columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "brand-mark",
@@ -474,21 +479,21 @@ function VehicleInspectionPage({ params }) {
                                     className: "fa-solid fa-truck-fast"
                                 }, void 0, false, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 294,
-                                    columnNumber: 13
+                                    lineNumber: 323,
+                                    columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     children: "FLEETGUARD"
                                 }, void 0, false, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 295,
-                                    columnNumber: 13
+                                    lineNumber: 324,
+                                    columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/vehicle/[id]/page.js",
-                            lineNumber: 293,
-                            columnNumber: 11
+                            lineNumber: 322,
+                            columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "vehicle-preview",
@@ -502,15 +507,15 @@ function VehicleInspectionPage({ params }) {
                                                 className: "sun"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                lineNumber: 300,
-                                                columnNumber: 17
+                                                lineNumber: 329,
+                                                columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "grass"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                lineNumber: 301,
-                                                columnNumber: 17
+                                                lineNumber: 330,
+                                                columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "street",
@@ -526,20 +531,20 @@ function VehicleInspectionPage({ params }) {
                                                                         className: "back-curve"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                        lineNumber: 305,
-                                                                        columnNumber: 53
+                                                                        lineNumber: 335,
+                                                                        columnNumber: 13
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                    lineNumber: 305,
-                                                                    columnNumber: 23
+                                                                    lineNumber: 334,
+                                                                    columnNumber: 12
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "car-gate"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                    lineNumber: 306,
-                                                                    columnNumber: 23
+                                                                    lineNumber: 337,
+                                                                    columnNumber: 12
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "car-top-front",
@@ -547,33 +552,33 @@ function VehicleInspectionPage({ params }) {
                                                                         className: "wind-sheild"
                                                                     }, void 0, false, {
                                                                         fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                        lineNumber: 307,
-                                                                        columnNumber: 54
+                                                                        lineNumber: 339,
+                                                                        columnNumber: 13
                                                                     }, this)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                    lineNumber: 307,
-                                                                    columnNumber: 23
+                                                                    lineNumber: 338,
+                                                                    columnNumber: 12
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "bonet-front"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                    lineNumber: 308,
-                                                                    columnNumber: 23
+                                                                    lineNumber: 341,
+                                                                    columnNumber: 12
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "stepney"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                    lineNumber: 309,
-                                                                    columnNumber: 23
+                                                                    lineNumber: 342,
+                                                                    columnNumber: 12
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 304,
-                                                            columnNumber: 21
+                                                            lineNumber: 333,
+                                                            columnNumber: 11
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "boundary-tyre-cover",
@@ -582,21 +587,21 @@ function VehicleInspectionPage({ params }) {
                                                                     className: "boundary-tyre-cover-back-bottom"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                    lineNumber: 311,
-                                                                    columnNumber: 58
+                                                                    lineNumber: 345,
+                                                                    columnNumber: 12
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                                     className: "boundary-tyre-cover-inner"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                    lineNumber: 311,
-                                                                    columnNumber: 113
+                                                                    lineNumber: 346,
+                                                                    columnNumber: 12
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 311,
-                                                            columnNumber: 21
+                                                            lineNumber: 344,
+                                                            columnNumber: 11
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "tyre-cover-front",
@@ -604,27 +609,27 @@ function VehicleInspectionPage({ params }) {
                                                                 className: "boundary-tyre-cover-inner-front"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                lineNumber: 312,
-                                                                columnNumber: 55
+                                                                lineNumber: 349,
+                                                                columnNumber: 12
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 312,
-                                                            columnNumber: 21
+                                                            lineNumber: 348,
+                                                            columnNumber: 11
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "base-axcel"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 313,
-                                                            columnNumber: 21
+                                                            lineNumber: 351,
+                                                            columnNumber: 11
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "front-bumper"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 314,
-                                                            columnNumber: 21
+                                                            lineNumber: 352,
+                                                            columnNumber: 11
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "tyre",
@@ -632,13 +637,13 @@ function VehicleInspectionPage({ params }) {
                                                                 className: "gap"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                lineNumber: 315,
-                                                                columnNumber: 43
+                                                                lineNumber: 354,
+                                                                columnNumber: 12
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 315,
-                                                            columnNumber: 21
+                                                            lineNumber: 353,
+                                                            columnNumber: 11
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "tyre front",
@@ -646,56 +651,56 @@ function VehicleInspectionPage({ params }) {
                                                                 className: "gap"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                lineNumber: 316,
-                                                                columnNumber: 49
+                                                                lineNumber: 357,
+                                                                columnNumber: 12
                                                             }, this)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 316,
-                                                            columnNumber: 21
+                                                            lineNumber: 356,
+                                                            columnNumber: 11
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                             className: "car-shadow"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 317,
-                                                            columnNumber: 21
+                                                            lineNumber: 359,
+                                                            columnNumber: 11
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 303,
-                                                    columnNumber: 19
+                                                    lineNumber: 332,
+                                                    columnNumber: 10
                                                 }, this)
                                             }, void 0, false, {
                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                lineNumber: 302,
-                                                columnNumber: 17
+                                                lineNumber: 331,
+                                                columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "street-stripe"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                lineNumber: 320,
-                                                columnNumber: 17
+                                                lineNumber: 362,
+                                                columnNumber: 9
                                             }, this),
                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "hill"
                                             }, void 0, false, {
                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                lineNumber: 321,
-                                                columnNumber: 17
+                                                lineNumber: 363,
+                                                columnNumber: 9
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/app/vehicle/[id]/page.js",
-                                        lineNumber: 299,
-                                        columnNumber: 15
+                                        lineNumber: 328,
+                                        columnNumber: 8
                                     }, this)
                                 }, void 0, false, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 298,
-                                    columnNumber: 13
+                                    lineNumber: 327,
+                                    columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "preview-details asymmetric-card",
@@ -704,8 +709,8 @@ function VehicleInspectionPage({ params }) {
                                             children: "Logistics Fleet Support"
                                         }, void 0, false, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 326,
-                                            columnNumber: 15
+                                            lineNumber: 368,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             children: [
@@ -714,14 +719,14 @@ function VehicleInspectionPage({ params }) {
                                                     children: vehicleName
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 327,
-                                                    columnNumber: 27
+                                                    lineNumber: 370,
+                                                    columnNumber: 18
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 327,
-                                            columnNumber: 15
+                                            lineNumber: 369,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             children: [
@@ -730,14 +735,14 @@ function VehicleInspectionPage({ params }) {
                                                     children: vehiclePlate
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 328,
-                                                    columnNumber: 25
+                                                    lineNumber: 373,
+                                                    columnNumber: 16
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 328,
-                                            columnNumber: 15
+                                            lineNumber: 372,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                             children: [
@@ -747,39 +752,39 @@ function VehicleInspectionPage({ params }) {
                                                     children: "OnDuty"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 329,
-                                                    columnNumber: 26
+                                                    lineNumber: 376,
+                                                    columnNumber: 17
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 329,
-                                            columnNumber: 15
+                                            lineNumber: 375,
+                                            columnNumber: 8
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 325,
-                                    columnNumber: 13
+                                    lineNumber: 367,
+                                    columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/vehicle/[id]/page.js",
-                            lineNumber: 297,
-                            columnNumber: 11
+                            lineNumber: 326,
+                            columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                             className: "decorative-line"
                         }, void 0, false, {
                             fileName: "[project]/app/vehicle/[id]/page.js",
-                            lineNumber: 332,
-                            columnNumber: 11
+                            lineNumber: 380,
+                            columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/vehicle/[id]/page.js",
-                    lineNumber: 291,
-                    columnNumber: 9
+                    lineNumber: 320,
+                    columnNumber: 5
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "right-panel",
@@ -791,21 +796,21 @@ function VehicleInspectionPage({ params }) {
                                     children: "Vehicle Inspection"
                                 }, void 0, false, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 338,
-                                    columnNumber: 13
+                                    lineNumber: 386,
+                                    columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                                     children: "Complete the comprehensive diagnostic checklist."
                                 }, void 0, false, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 339,
-                                    columnNumber: 13
+                                    lineNumber: 387,
+                                    columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/vehicle/[id]/page.js",
-                            lineNumber: 337,
-                            columnNumber: 11
+                            lineNumber: 385,
+                            columnNumber: 6
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("form", {
                             className: "logistics-form",
@@ -821,21 +826,21 @@ function VehicleInspectionPage({ params }) {
                                                     className: "fa-solid fa-volume-high section-icon"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 346,
-                                                    columnNumber: 17
+                                                    lineNumber: 394,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                     children: "Sound Analysis"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 347,
-                                                    columnNumber: 17
+                                                    lineNumber: 395,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 345,
-                                            columnNumber: 15
+                                            lineNumber: 393,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "toggle-wrapper",
@@ -844,8 +849,8 @@ function VehicleInspectionPage({ params }) {
                                                     children: "Any unusual engine sound?"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 350,
-                                                    columnNumber: 17
+                                                    lineNumber: 398,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                     className: "toggle-switch",
@@ -853,38 +858,38 @@ function VehicleInspectionPage({ params }) {
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                             type: "checkbox",
                                                             checked: formData.sounds.unusualEngineSound,
-                                                            onChange: (e)=>updateState('sounds', 'unusualEngineSound', e.target.checked)
+                                                            onChange: (e)=>updateState("sounds", "unusualEngineSound", e.target.checked)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 352,
-                                                            columnNumber: 19
+                                                            lineNumber: 400,
+                                                            columnNumber: 10
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             className: "slider"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 357,
-                                                            columnNumber: 19
+                                                            lineNumber: 411,
+                                                            columnNumber: 10
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 351,
-                                                    columnNumber: 17
+                                                    lineNumber: 399,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 349,
-                                            columnNumber: 15
+                                            lineNumber: 397,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "checkbox-grid",
                                             children: [
-                                                'knocking',
-                                                'ticking',
-                                                'rattling',
-                                                'whining'
+                                                "knocking",
+                                                "ticking",
+                                                "rattling",
+                                                "whining"
                                             ].map((type)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "checkbox-group",
                                                     children: [
@@ -892,45 +897,45 @@ function VehicleInspectionPage({ params }) {
                                                             type: "checkbox",
                                                             id: `sound-${type}`,
                                                             checked: formData.sounds.soundTypes.includes(type),
-                                                            onChange: ()=>toggleArrayItem('sounds', 'soundTypes', type)
+                                                            onChange: ()=>toggleArrayItem("sounds", "soundTypes", type)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 363,
-                                                            columnNumber: 21
+                                                            lineNumber: 417,
+                                                            columnNumber: 11
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                             htmlFor: `sound-${type}`,
                                                             children: type.charAt(0).toUpperCase() + type.slice(1)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 369,
-                                                            columnNumber: 21
+                                                            lineNumber: 425,
+                                                            columnNumber: 11
                                                         }, this)
                                                     ]
                                                 }, type, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 362,
-                                                    columnNumber: 19
+                                                    lineNumber: 416,
+                                                    columnNumber: 10
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 360,
-                                            columnNumber: 15
+                                            lineNumber: 414,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "input-grid",
                                             style: {
-                                                marginTop: '1.5rem'
+                                                marginTop: "1.5rem"
                                             },
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "input-group",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                                            value: formData.sounds.brakingSound.exists ? 'yes' : 'no',
-                                                            onChange: (e)=>updateState('sounds', 'brakingSound', {
+                                                            value: formData.sounds.brakingSound.exists ? "yes" : "no",
+                                                            onChange: (e)=>updateState("sounds", "brakingSound", {
                                                                     ...formData.sounds.brakingSound,
-                                                                    exists: e.target.value === 'yes'
+                                                                    exists: e.target.value === "yes"
                                                                 }),
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -938,44 +943,44 @@ function VehicleInspectionPage({ params }) {
                                                                     children: "No"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                    lineNumber: 379,
-                                                                    columnNumber: 21
+                                                                    lineNumber: 442,
+                                                                    columnNumber: 11
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                     value: "yes",
                                                                     children: "Yes"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                    lineNumber: 380,
-                                                                    columnNumber: 21
+                                                                    lineNumber: 443,
+                                                                    columnNumber: 11
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 375,
-                                                            columnNumber: 19
+                                                            lineNumber: 433,
+                                                            columnNumber: 10
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                             children: "Sound while braking?"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 382,
-                                                            columnNumber: 19
+                                                            lineNumber: 445,
+                                                            columnNumber: 10
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 374,
-                                                    columnNumber: 17
+                                                    lineNumber: 432,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "input-group",
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                                            value: formData.sounds.turningSound.exists ? 'yes' : 'no',
-                                                            onChange: (e)=>updateState('sounds', 'turningSound', {
+                                                            value: formData.sounds.turningSound.exists ? "yes" : "no",
+                                                            onChange: (e)=>updateState("sounds", "turningSound", {
                                                                     ...formData.sounds.turningSound,
-                                                                    exists: e.target.value === 'yes'
+                                                                    exists: e.target.value === "yes"
                                                                 }),
                                                             children: [
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
@@ -983,47 +988,47 @@ function VehicleInspectionPage({ params }) {
                                                                     children: "No"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                    lineNumber: 389,
-                                                                    columnNumber: 21
+                                                                    lineNumber: 457,
+                                                                    columnNumber: 11
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                                     value: "yes",
                                                                     children: "Yes"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                    lineNumber: 390,
-                                                                    columnNumber: 21
+                                                                    lineNumber: 458,
+                                                                    columnNumber: 11
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 385,
-                                                            columnNumber: 19
+                                                            lineNumber: 448,
+                                                            columnNumber: 10
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                             children: "Sound while turning?"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 392,
-                                                            columnNumber: 19
+                                                            lineNumber: 460,
+                                                            columnNumber: 10
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 384,
-                                                    columnNumber: 17
+                                                    lineNumber: 447,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 373,
-                                            columnNumber: 15
+                                            lineNumber: 431,
+                                            columnNumber: 8
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 344,
-                                    columnNumber: 13
+                                    lineNumber: 392,
+                                    columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "form-section",
@@ -1035,21 +1040,21 @@ function VehicleInspectionPage({ params }) {
                                                     className: "fa-solid fa-wave-square section-icon"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 400,
-                                                    columnNumber: 17
+                                                    lineNumber: 468,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                     children: "Vibrations"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 401,
-                                                    columnNumber: 17
+                                                    lineNumber: 469,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 399,
-                                            columnNumber: 15
+                                            lineNumber: 467,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "toggle-wrapper",
@@ -1058,8 +1063,8 @@ function VehicleInspectionPage({ params }) {
                                                     children: "Steering wheel vibration?"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 404,
-                                                    columnNumber: 17
+                                                    lineNumber: 472,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                     className: "toggle-switch",
@@ -1067,30 +1072,30 @@ function VehicleInspectionPage({ params }) {
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                             type: "checkbox",
                                                             checked: formData.vibrations.steeringWheelVibration,
-                                                            onChange: (e)=>updateState('vibrations', 'steeringWheelVibration', e.target.checked)
+                                                            onChange: (e)=>updateState("vibrations", "steeringWheelVibration", e.target.checked)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 406,
-                                                            columnNumber: 19
+                                                            lineNumber: 474,
+                                                            columnNumber: 10
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             className: "slider"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 411,
-                                                            columnNumber: 19
+                                                            lineNumber: 485,
+                                                            columnNumber: 10
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 405,
-                                                    columnNumber: 17
+                                                    lineNumber: 473,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 403,
-                                            columnNumber: 15
+                                            lineNumber: 471,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "toggle-wrapper",
@@ -1099,8 +1104,8 @@ function VehicleInspectionPage({ params }) {
                                                     children: "Car shaking at high speed?"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 415,
-                                                    columnNumber: 17
+                                                    lineNumber: 489,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                     className: "toggle-switch",
@@ -1108,30 +1113,30 @@ function VehicleInspectionPage({ params }) {
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                             type: "checkbox",
                                                             checked: formData.vibrations.highSpeedShaking,
-                                                            onChange: (e)=>updateState('vibrations', 'highSpeedShaking', e.target.checked)
+                                                            onChange: (e)=>updateState("vibrations", "highSpeedShaking", e.target.checked)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 417,
-                                                            columnNumber: 19
+                                                            lineNumber: 491,
+                                                            columnNumber: 10
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             className: "slider"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 422,
-                                                            columnNumber: 19
+                                                            lineNumber: 502,
+                                                            columnNumber: 10
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 416,
-                                                    columnNumber: 17
+                                                    lineNumber: 490,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 414,
-                                            columnNumber: 15
+                                            lineNumber: 488,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "toggle-wrapper",
@@ -1140,8 +1145,8 @@ function VehicleInspectionPage({ params }) {
                                                     children: "Vibration when braking?"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 426,
-                                                    columnNumber: 17
+                                                    lineNumber: 506,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                     className: "toggle-switch",
@@ -1149,36 +1154,36 @@ function VehicleInspectionPage({ params }) {
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                             type: "checkbox",
                                                             checked: formData.vibrations.brakingVibration,
-                                                            onChange: (e)=>updateState('vibrations', 'brakingVibration', e.target.checked)
+                                                            onChange: (e)=>updateState("vibrations", "brakingVibration", e.target.checked)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 428,
-                                                            columnNumber: 19
+                                                            lineNumber: 508,
+                                                            columnNumber: 10
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             className: "slider"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 433,
-                                                            columnNumber: 19
+                                                            lineNumber: 519,
+                                                            columnNumber: 10
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 427,
-                                                    columnNumber: 17
+                                                    lineNumber: 507,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 425,
-                                            columnNumber: 15
+                                            lineNumber: 505,
+                                            columnNumber: 8
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 398,
-                                    columnNumber: 13
+                                    lineNumber: 466,
+                                    columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "form-section",
@@ -1190,40 +1195,40 @@ function VehicleInspectionPage({ params }) {
                                                     className: "fa-solid fa-wind section-icon"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 441,
-                                                    columnNumber: 17
+                                                    lineNumber: 527,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                     children: "Smells"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 442,
-                                                    columnNumber: 17
+                                                    lineNumber: 528,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 440,
-                                            columnNumber: 15
+                                            lineNumber: 526,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "checkbox-grid",
                                             children: [
                                                 {
-                                                    key: 'burningSmell',
-                                                    label: 'Burning smell'
+                                                    key: "burningSmell",
+                                                    label: "Burning smell"
                                                 },
                                                 {
-                                                    key: 'fuelSmell',
-                                                    label: 'Fuel smell'
+                                                    key: "fuelSmell",
+                                                    label: "Fuel smell"
                                                 },
                                                 {
-                                                    key: 'rottenEggSmell',
-                                                    label: 'Rotten egg smell'
+                                                    key: "rottenEggSmell",
+                                                    label: "Rotten egg smell"
                                                 },
                                                 {
-                                                    key: 'coolantSmell',
-                                                    label: 'Sweet coolant smell'
+                                                    key: "coolantSmell",
+                                                    label: "Sweet coolant smell"
                                                 }
                                             ].map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "checkbox-group",
@@ -1232,36 +1237,36 @@ function VehicleInspectionPage({ params }) {
                                                             type: "checkbox",
                                                             id: item.key,
                                                             checked: formData.smells[item.key],
-                                                            onChange: (e)=>updateState('smells', item.key, e.target.checked)
+                                                            onChange: (e)=>updateState("smells", item.key, e.target.checked)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 452,
-                                                            columnNumber: 21
+                                                            lineNumber: 538,
+                                                            columnNumber: 11
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                             htmlFor: item.key,
                                                             children: item.label
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 458,
-                                                            columnNumber: 21
+                                                            lineNumber: 546,
+                                                            columnNumber: 11
                                                         }, this)
                                                     ]
                                                 }, item.key, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 451,
-                                                    columnNumber: 19
+                                                    lineNumber: 537,
+                                                    columnNumber: 10
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 444,
-                                            columnNumber: 15
+                                            lineNumber: 530,
+                                            columnNumber: 8
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 439,
-                                    columnNumber: 13
+                                    lineNumber: 525,
+                                    columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "form-section",
@@ -1273,38 +1278,38 @@ function VehicleInspectionPage({ params }) {
                                                     className: "fa-solid fa-droplet section-icon"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 467,
-                                                    columnNumber: 17
+                                                    lineNumber: 555,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                     children: "Leaks"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 468,
-                                                    columnNumber: 17
+                                                    lineNumber: 556,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 466,
-                                            columnNumber: 15
+                                            lineNumber: 554,
+                                            columnNumber: 8
                                         }, this),
                                         [
                                             {
-                                                key: 'oilSpots',
-                                                label: 'Oil spots under car'
+                                                key: "oilSpots",
+                                                label: "Oil spots under car"
                                             },
                                             {
-                                                key: 'coolantLeak',
-                                                label: 'Coolant (green/pink)'
+                                                key: "coolantLeak",
+                                                label: "Coolant (green/pink)"
                                             },
                                             {
-                                                key: 'waterFromAC',
-                                                label: 'Water (AC normal)'
+                                                key: "waterFromAC",
+                                                label: "Water (AC normal)"
                                             },
                                             {
-                                                key: 'brakeFluidLeak',
-                                                label: 'Brake fluid leaks'
+                                                key: "brakeFluidLeak",
+                                                label: "Brake fluid leaks"
                                             }
                                         ].map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "toggle-wrapper",
@@ -1313,8 +1318,8 @@ function VehicleInspectionPage({ params }) {
                                                         children: item.label
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/vehicle/[id]/page.js",
-                                                        lineNumber: 477,
-                                                        columnNumber: 19
+                                                        lineNumber: 565,
+                                                        columnNumber: 10
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                         className: "toggle-switch",
@@ -1322,36 +1327,36 @@ function VehicleInspectionPage({ params }) {
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                                 type: "checkbox",
                                                                 checked: formData.leaks[item.key],
-                                                                onChange: (e)=>updateState('leaks', item.key, e.target.checked)
+                                                                onChange: (e)=>updateState("leaks", item.key, e.target.checked)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                lineNumber: 479,
-                                                                columnNumber: 21
+                                                                lineNumber: 567,
+                                                                columnNumber: 11
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                 className: "slider"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                lineNumber: 484,
-                                                                columnNumber: 21
+                                                                lineNumber: 574,
+                                                                columnNumber: 11
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/vehicle/[id]/page.js",
-                                                        lineNumber: 478,
-                                                        columnNumber: 19
+                                                        lineNumber: 566,
+                                                        columnNumber: 10
                                                     }, this)
                                                 ]
                                             }, item.key, true, {
                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                lineNumber: 476,
-                                                columnNumber: 17
+                                                lineNumber: 564,
+                                                columnNumber: 9
                                             }, this))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 465,
-                                    columnNumber: 13
+                                    lineNumber: 553,
+                                    columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "form-section",
@@ -1363,44 +1368,44 @@ function VehicleInspectionPage({ params }) {
                                                     className: "fa-solid fa-gamepad section-icon"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 493,
-                                                    columnNumber: 17
+                                                    lineNumber: 583,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                     children: "Driving Behavior"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 494,
-                                                    columnNumber: 17
+                                                    lineNumber: 584,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 492,
-                                            columnNumber: 15
+                                            lineNumber: 582,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "checkbox-grid",
                                             children: [
                                                 {
-                                                    key: 'reducedPower',
-                                                    label: 'Reduced pickup/power'
+                                                    key: "reducedPower",
+                                                    label: "Reduced pickup/power"
                                                 },
                                                 {
-                                                    key: 'gearShiftingDifficulty',
-                                                    label: 'Gear shifting difficulty'
+                                                    key: "gearShiftingDifficulty",
+                                                    label: "Gear shifting difficulty"
                                                 },
                                                 {
-                                                    key: 'engineStalling',
-                                                    label: 'Engine stalling'
+                                                    key: "engineStalling",
+                                                    label: "Engine stalling"
                                                 },
                                                 {
-                                                    key: 'hardSteering',
-                                                    label: 'Hard steering'
+                                                    key: "hardSteering",
+                                                    label: "Hard steering"
                                                 },
                                                 {
-                                                    key: 'overheating',
-                                                    label: 'Car overheating'
+                                                    key: "overheating",
+                                                    label: "Car overheating"
                                                 }
                                             ].map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "checkbox-group",
@@ -1409,40 +1414,40 @@ function VehicleInspectionPage({ params }) {
                                                             type: "checkbox",
                                                             id: item.key,
                                                             checked: formData.drivingBehavior[item.key],
-                                                            onChange: (e)=>updateState('drivingBehavior', item.key, e.target.checked)
+                                                            onChange: (e)=>updateState("drivingBehavior", item.key, e.target.checked)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 505,
-                                                            columnNumber: 21
+                                                            lineNumber: 598,
+                                                            columnNumber: 11
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                             htmlFor: item.key,
                                                             children: item.label
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 511,
-                                                            columnNumber: 21
+                                                            lineNumber: 610,
+                                                            columnNumber: 11
                                                         }, this)
                                                     ]
                                                 }, item.key, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 504,
-                                                    columnNumber: 19
+                                                    lineNumber: 597,
+                                                    columnNumber: 10
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 496,
-                                            columnNumber: 15
+                                            lineNumber: 586,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "input-group",
                                             style: {
-                                                marginTop: '1rem'
+                                                marginTop: "1rem"
                                             },
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
-                                                    value: formData.drivingBehavior.pulling.direction || '',
-                                                    onChange: (e)=>updateState('drivingBehavior', 'pulling', {
+                                                    value: formData.drivingBehavior.pulling.direction || "",
+                                                    onChange: (e)=>updateState("drivingBehavior", "pulling", {
                                                             exists: !!e.target.value,
                                                             direction: e.target.value
                                                         }),
@@ -1452,49 +1457,49 @@ function VehicleInspectionPage({ params }) {
                                                             children: "None"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 520,
-                                                            columnNumber: 19
+                                                            lineNumber: 624,
+                                                            columnNumber: 10
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                             value: "left",
                                                             children: "Left"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 521,
-                                                            columnNumber: 19
+                                                            lineNumber: 625,
+                                                            columnNumber: 10
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                             value: "right",
                                                             children: "Right"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 522,
-                                                            columnNumber: 19
+                                                            lineNumber: 626,
+                                                            columnNumber: 10
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 516,
-                                                    columnNumber: 17
+                                                    lineNumber: 615,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                     children: "Car pulling left/right"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 524,
-                                                    columnNumber: 17
+                                                    lineNumber: 628,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 515,
-                                            columnNumber: 15
+                                            lineNumber: 614,
+                                            columnNumber: 8
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 491,
-                                    columnNumber: 13
+                                    lineNumber: 581,
+                                    columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "form-section",
@@ -1506,46 +1511,46 @@ function VehicleInspectionPage({ params }) {
                                                     className: "fa-solid fa-gauge-high section-icon"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 531,
-                                                    columnNumber: 17
+                                                    lineNumber: 635,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                     children: "Dashboard & Warnings"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 532,
-                                                    columnNumber: 17
+                                                    lineNumber: 636,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 530,
-                                            columnNumber: 15
+                                            lineNumber: 634,
+                                            columnNumber: 8
                                         }, this),
                                         [
                                             {
-                                                key: 'checkEngineLight',
-                                                label: 'Check engine light'
+                                                key: "checkEngineLight",
+                                                label: "Check engine light"
                                             },
                                             {
-                                                key: 'absLight',
-                                                label: 'ABS light'
+                                                key: "absLight",
+                                                label: "ABS light"
                                             },
                                             {
-                                                key: 'oilPressureLight',
-                                                label: 'Oil pressure light'
+                                                key: "oilPressureLight",
+                                                label: "Oil pressure light"
                                             },
                                             {
-                                                key: 'batteryLight',
-                                                label: 'Battery light'
+                                                key: "batteryLight",
+                                                label: "Battery light"
                                             },
                                             {
-                                                key: 'temperatureWarning',
-                                                label: 'Temperature warning'
+                                                key: "temperatureWarning",
+                                                label: "Temperature warning"
                                             },
                                             {
-                                                key: 'tpmsWarning',
-                                                label: 'TPMS (Tyre pressure)'
+                                                key: "tpmsWarning",
+                                                label: "TPMS (Tyre pressure)"
                                             }
                                         ].map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "status-indicator-group",
@@ -1554,30 +1559,30 @@ function VehicleInspectionPage({ params }) {
                                                         children: item.label
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/vehicle/[id]/page.js",
-                                                        lineNumber: 543,
-                                                        columnNumber: 19
+                                                        lineNumber: 647,
+                                                        columnNumber: 10
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                                         type: "button",
-                                                        className: `status-btn ${formData.dashboardWarnings[item.key] ? 'active' : ''}`,
-                                                        onClick: ()=>updateState('dashboardWarnings', item.key, !formData.dashboardWarnings[item.key]),
-                                                        children: formData.dashboardWarnings[item.key] ? 'ON' : 'OFF'
+                                                        className: `status-btn ${formData.dashboardWarnings[item.key] ? "active" : ""}`,
+                                                        onClick: ()=>updateState("dashboardWarnings", item.key, !formData.dashboardWarnings[item.key]),
+                                                        children: formData.dashboardWarnings[item.key] ? "ON" : "OFF"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/vehicle/[id]/page.js",
-                                                        lineNumber: 544,
-                                                        columnNumber: 19
+                                                        lineNumber: 648,
+                                                        columnNumber: 10
                                                     }, this)
                                                 ]
                                             }, item.key, true, {
                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                lineNumber: 542,
-                                                columnNumber: 17
+                                                lineNumber: 646,
+                                                columnNumber: 9
                                             }, this))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 529,
-                                    columnNumber: 13
+                                    lineNumber: 633,
+                                    columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "form-section",
@@ -1589,34 +1594,34 @@ function VehicleInspectionPage({ params }) {
                                                     className: "fa-solid fa-circle-notch section-icon"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 558,
-                                                    columnNumber: 17
+                                                    lineNumber: 670,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                     children: "Tyres & Brakes"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 559,
-                                                    columnNumber: 17
+                                                    lineNumber: 671,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 557,
-                                            columnNumber: 15
+                                            lineNumber: 669,
+                                            columnNumber: 8
                                         }, this),
                                         [
                                             {
-                                                key: 'unevenTyreWear',
-                                                label: 'Uneven tyre wear'
+                                                key: "unevenTyreWear",
+                                                label: "Uneven tyre wear"
                                             },
                                             {
-                                                key: 'lowPressureOften',
-                                                label: 'Low tyre pressure often'
+                                                key: "lowPressureOften",
+                                                label: "Low tyre pressure often"
                                             },
                                             {
-                                                key: 'squeakyBrakes',
-                                                label: 'Squeaky brakes'
+                                                key: "squeakyBrakes",
+                                                label: "Squeaky brakes"
                                             }
                                         ].map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "toggle-wrapper",
@@ -1625,8 +1630,8 @@ function VehicleInspectionPage({ params }) {
                                                         children: item.label
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/vehicle/[id]/page.js",
-                                                        lineNumber: 567,
-                                                        columnNumber: 19
+                                                        lineNumber: 679,
+                                                        columnNumber: 10
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                         className: "toggle-switch",
@@ -1634,89 +1639,89 @@ function VehicleInspectionPage({ params }) {
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                                 type: "checkbox",
                                                                 checked: formData.tyresBrakes[item.key],
-                                                                onChange: (e)=>updateState('tyresBrakes', item.key, e.target.checked)
+                                                                onChange: (e)=>updateState("tyresBrakes", item.key, e.target.checked)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                lineNumber: 569,
-                                                                columnNumber: 21
+                                                                lineNumber: 681,
+                                                                columnNumber: 11
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                 className: "slider"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                lineNumber: 574,
-                                                                columnNumber: 21
+                                                                lineNumber: 688,
+                                                                columnNumber: 11
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/vehicle/[id]/page.js",
-                                                        lineNumber: 568,
-                                                        columnNumber: 19
+                                                        lineNumber: 680,
+                                                        columnNumber: 10
                                                     }, this)
                                                 ]
                                             }, item.key, true, {
                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                lineNumber: 566,
-                                                columnNumber: 17
+                                                lineNumber: 678,
+                                                columnNumber: 9
                                             }, this)),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "input-group",
                                             style: {
-                                                marginTop: '1rem'
+                                                marginTop: "1rem"
                                             },
                                             children: [
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("select", {
                                                     value: formData.tyresBrakes.brakePedalFeel,
-                                                    onChange: (e)=>updateState('tyresBrakes', 'brakePedalFeel', e.target.value),
+                                                    onChange: (e)=>updateState("tyresBrakes", "brakePedalFeel", e.target.value),
                                                     children: [
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                             value: "normal",
                                                             children: "Normal"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 583,
-                                                            columnNumber: 19
+                                                            lineNumber: 699,
+                                                            columnNumber: 10
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                             value: "soft",
                                                             children: "Too Soft"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 584,
-                                                            columnNumber: 19
+                                                            lineNumber: 700,
+                                                            columnNumber: 10
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("option", {
                                                             value: "hard",
                                                             children: "Too Hard"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 585,
-                                                            columnNumber: 19
+                                                            lineNumber: 701,
+                                                            columnNumber: 10
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 579,
-                                                    columnNumber: 17
+                                                    lineNumber: 693,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                     children: "Brake pedal feel"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 587,
-                                                    columnNumber: 17
+                                                    lineNumber: 703,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 578,
-                                            columnNumber: 15
+                                            lineNumber: 692,
+                                            columnNumber: 8
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 556,
-                                    columnNumber: 13
+                                    lineNumber: 668,
+                                    columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "form-section",
@@ -1728,44 +1733,44 @@ function VehicleInspectionPage({ params }) {
                                                     className: "fa-solid fa-plug section-icon"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 594,
-                                                    columnNumber: 17
+                                                    lineNumber: 710,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                     children: "Electrical Issues"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 595,
-                                                    columnNumber: 17
+                                                    lineNumber: 711,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 593,
-                                            columnNumber: 15
+                                            lineNumber: 709,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "checkbox-grid",
                                             children: [
                                                 {
-                                                    key: 'dimHeadlights',
-                                                    label: 'Dim headlights'
+                                                    key: "dimHeadlights",
+                                                    label: "Dim headlights"
                                                 },
                                                 {
-                                                    key: 'acNotCooling',
-                                                    label: 'AC not cooling well'
+                                                    key: "acNotCooling",
+                                                    label: "AC not cooling well"
                                                 },
                                                 {
-                                                    key: 'slowPowerWindows',
-                                                    label: 'Power windows slow'
+                                                    key: "slowPowerWindows",
+                                                    label: "Power windows slow"
                                                 },
                                                 {
-                                                    key: 'batteryDyingOften',
-                                                    label: 'Battery dying often'
+                                                    key: "batteryDyingOften",
+                                                    label: "Battery dying often"
                                                 },
                                                 {
-                                                    key: 'slowStart',
-                                                    label: 'Car taking too long to start'
+                                                    key: "slowStart",
+                                                    label: "Car taking too long to start"
                                                 }
                                             ].map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "checkbox-group",
@@ -1774,36 +1779,36 @@ function VehicleInspectionPage({ params }) {
                                                             type: "checkbox",
                                                             id: item.key,
                                                             checked: formData.electricalIssues[item.key],
-                                                            onChange: (e)=>updateState('electricalIssues', item.key, e.target.checked)
+                                                            onChange: (e)=>updateState("electricalIssues", item.key, e.target.checked)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 606,
-                                                            columnNumber: 21
+                                                            lineNumber: 722,
+                                                            columnNumber: 11
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                             htmlFor: item.key,
                                                             children: item.label
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 612,
-                                                            columnNumber: 21
+                                                            lineNumber: 734,
+                                                            columnNumber: 11
                                                         }, this)
                                                     ]
                                                 }, item.key, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 605,
-                                                    columnNumber: 19
+                                                    lineNumber: 721,
+                                                    columnNumber: 10
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 597,
-                                            columnNumber: 15
+                                            lineNumber: 713,
+                                            columnNumber: 8
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 592,
-                                    columnNumber: 13
+                                    lineNumber: 708,
+                                    columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "form-section",
@@ -1815,38 +1820,38 @@ function VehicleInspectionPage({ params }) {
                                                     className: "fa-solid fa-oil-can section-icon"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 621,
-                                                    columnNumber: 17
+                                                    lineNumber: 743,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                     children: "Fluids Condition"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 622,
-                                                    columnNumber: 17
+                                                    lineNumber: 744,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 620,
-                                            columnNumber: 15
+                                            lineNumber: 742,
+                                            columnNumber: 8
                                         }, this),
                                         [
                                             {
-                                                key: 'lowEngineOil',
-                                                label: 'Engine oil level low'
+                                                key: "lowEngineOil",
+                                                label: "Engine oil level low"
                                             },
                                             {
-                                                key: 'blackOilColor',
-                                                label: 'Oil colour very black'
+                                                key: "blackOilColor",
+                                                label: "Oil colour very black"
                                             },
                                             {
-                                                key: 'lowCoolant',
-                                                label: 'Coolant level low'
+                                                key: "lowCoolant",
+                                                label: "Coolant level low"
                                             },
                                             {
-                                                key: 'lowBrakeFluid',
-                                                label: 'Brake fluid low'
+                                                key: "lowBrakeFluid",
+                                                label: "Brake fluid low"
                                             }
                                         ].map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                 className: "toggle-wrapper",
@@ -1855,8 +1860,8 @@ function VehicleInspectionPage({ params }) {
                                                         children: item.label
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/vehicle/[id]/page.js",
-                                                        lineNumber: 631,
-                                                        columnNumber: 19
+                                                        lineNumber: 753,
+                                                        columnNumber: 10
                                                     }, this),
                                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                         className: "toggle-switch",
@@ -1864,36 +1869,36 @@ function VehicleInspectionPage({ params }) {
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                                 type: "checkbox",
                                                                 checked: formData.fluidsCondition[item.key],
-                                                                onChange: (e)=>updateState('fluidsCondition', item.key, e.target.checked)
+                                                                onChange: (e)=>updateState("fluidsCondition", item.key, e.target.checked)
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                lineNumber: 633,
-                                                                columnNumber: 21
+                                                                lineNumber: 755,
+                                                                columnNumber: 11
                                                             }, this),
                                                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                 className: "slider"
                                                             }, void 0, false, {
                                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                lineNumber: 638,
-                                                                columnNumber: 21
+                                                                lineNumber: 766,
+                                                                columnNumber: 11
                                                             }, this)
                                                         ]
                                                     }, void 0, true, {
                                                         fileName: "[project]/app/vehicle/[id]/page.js",
-                                                        lineNumber: 632,
-                                                        columnNumber: 19
+                                                        lineNumber: 754,
+                                                        columnNumber: 10
                                                     }, this)
                                                 ]
                                             }, item.key, true, {
                                                 fileName: "[project]/app/vehicle/[id]/page.js",
-                                                lineNumber: 630,
-                                                columnNumber: 17
+                                                lineNumber: 752,
+                                                columnNumber: 9
                                             }, this))
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 619,
-                                    columnNumber: 13
+                                    lineNumber: 741,
+                                    columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "form-section",
@@ -1905,44 +1910,44 @@ function VehicleInspectionPage({ params }) {
                                                     className: "fa-solid fa-calendar-days section-icon"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 647,
-                                                    columnNumber: 17
+                                                    lineNumber: 775,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                     children: "Service History"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 648,
-                                                    columnNumber: 17
+                                                    lineNumber: 776,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 646,
-                                            columnNumber: 15
+                                            lineNumber: 774,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "input-grid",
                                             children: [
                                                 {
-                                                    key: 'lastServiceDate',
-                                                    label: 'Last service date'
+                                                    key: "lastServiceDate",
+                                                    label: "Last service date"
                                                 },
                                                 {
-                                                    key: 'lastOilChange',
-                                                    label: 'Last oil change'
+                                                    key: "lastOilChange",
+                                                    label: "Last oil change"
                                                 },
                                                 {
-                                                    key: 'lastBrakePadChange',
-                                                    label: 'Last brake pad change'
+                                                    key: "lastBrakePadChange",
+                                                    label: "Last brake pad change"
                                                 },
                                                 {
-                                                    key: 'lastTyreChange',
-                                                    label: 'Last tyre change'
+                                                    key: "lastTyreChange",
+                                                    label: "Last tyre change"
                                                 },
                                                 {
-                                                    key: 'lastBatteryChange',
-                                                    label: 'Last battery change'
+                                                    key: "lastBatteryChange",
+                                                    label: "Last battery change"
                                                 }
                                             ].map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "input-group",
@@ -1950,35 +1955,35 @@ function VehicleInspectionPage({ params }) {
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                             type: "date",
                                                             value: formData.serviceHistory[item.key],
-                                                            onChange: (e)=>updateState('serviceHistory', item.key, e.target.value)
+                                                            onChange: (e)=>updateState("serviceHistory", item.key, e.target.value)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 659,
-                                                            columnNumber: 21
+                                                            lineNumber: 787,
+                                                            columnNumber: 11
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                             children: item.label
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 664,
-                                                            columnNumber: 21
+                                                            lineNumber: 794,
+                                                            columnNumber: 11
                                                         }, this)
                                                     ]
                                                 }, item.key, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 658,
-                                                    columnNumber: 19
+                                                    lineNumber: 786,
+                                                    columnNumber: 10
                                                 }, this))
                                         }, void 0, false, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 650,
-                                            columnNumber: 15
+                                            lineNumber: 778,
+                                            columnNumber: 8
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 645,
-                                    columnNumber: 13
+                                    lineNumber: 773,
+                                    columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "form-section",
@@ -1990,21 +1995,21 @@ function VehicleInspectionPage({ params }) {
                                                     className: "fa-solid fa-bolt section-icon"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 673,
-                                                    columnNumber: 17
+                                                    lineNumber: 803,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                     children: "Electric Vehicles (Optional)"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 674,
-                                                    columnNumber: 17
+                                                    lineNumber: 804,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 672,
-                                            columnNumber: 15
+                                            lineNumber: 802,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "toggle-wrapper",
@@ -2013,8 +2018,8 @@ function VehicleInspectionPage({ params }) {
                                                     children: "Is this an EV?"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 677,
-                                                    columnNumber: 17
+                                                    lineNumber: 807,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                     className: "toggle-switch",
@@ -2022,48 +2027,48 @@ function VehicleInspectionPage({ params }) {
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                             type: "checkbox",
                                                             checked: formData.evSpecific.isEV,
-                                                            onChange: (e)=>updateState('evSpecific', 'isEV', e.target.checked)
+                                                            onChange: (e)=>updateState("evSpecific", "isEV", e.target.checked)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 679,
-                                                            columnNumber: 19
+                                                            lineNumber: 809,
+                                                            columnNumber: 10
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                             className: "slider"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 684,
-                                                            columnNumber: 19
+                                                            lineNumber: 816,
+                                                            columnNumber: 10
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 678,
-                                                    columnNumber: 17
+                                                    lineNumber: 808,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 676,
-                                            columnNumber: 15
+                                            lineNumber: 806,
+                                            columnNumber: 8
                                         }, this),
                                         formData.evSpecific.isEV && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                                             children: [
                                                 {
-                                                    key: 'rangeDroppingFast',
-                                                    label: 'Range dropping fast'
+                                                    key: "rangeDroppingFast",
+                                                    label: "Range dropping fast"
                                                 },
                                                 {
-                                                    key: 'chargingSlow',
-                                                    label: 'Charging slow'
+                                                    key: "chargingSlow",
+                                                    label: "Charging slow"
                                                 },
                                                 {
-                                                    key: 'batteryHeating',
-                                                    label: 'Battery heating'
+                                                    key: "batteryHeating",
+                                                    label: "Battery heating"
                                                 },
                                                 {
-                                                    key: 'inverterNoise',
-                                                    label: 'Strange inverter/motor noise'
+                                                    key: "inverterNoise",
+                                                    label: "Strange inverter/motor noise"
                                                 }
                                             ].map((item)=>/*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "toggle-wrapper",
@@ -2072,8 +2077,8 @@ function VehicleInspectionPage({ params }) {
                                                             children: item.label
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 696,
-                                                            columnNumber: 23
+                                                            lineNumber: 831,
+                                                            columnNumber: 12
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                             className: "toggle-switch",
@@ -2081,37 +2086,37 @@ function VehicleInspectionPage({ params }) {
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
                                                                     type: "checkbox",
                                                                     checked: formData.evSpecific[item.key],
-                                                                    onChange: (e)=>updateState('evSpecific', item.key, e.target.checked)
+                                                                    onChange: (e)=>updateState("evSpecific", item.key, e.target.checked)
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                    lineNumber: 698,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 833,
+                                                                    columnNumber: 13
                                                                 }, this),
                                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                                                     className: "slider"
                                                                 }, void 0, false, {
                                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                                    lineNumber: 703,
-                                                                    columnNumber: 25
+                                                                    lineNumber: 844,
+                                                                    columnNumber: 13
                                                                 }, this)
                                                             ]
                                                         }, void 0, true, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 697,
-                                                            columnNumber: 23
+                                                            lineNumber: 832,
+                                                            columnNumber: 12
                                                         }, this)
                                                     ]
                                                 }, item.key, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 695,
-                                                    columnNumber: 21
+                                                    lineNumber: 830,
+                                                    columnNumber: 11
                                                 }, this))
                                         }, void 0, false)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 671,
-                                    columnNumber: 13
+                                    lineNumber: 801,
+                                    columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "form-section",
@@ -2123,21 +2128,21 @@ function VehicleInspectionPage({ params }) {
                                                     className: "fa-solid fa-camera section-icon"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 714,
-                                                    columnNumber: 17
+                                                    lineNumber: 855,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("h2", {
                                                     children: "Photos & Documents"
                                                 }, void 0, false, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 715,
-                                                    columnNumber: 17
+                                                    lineNumber: 856,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 713,
-                                            columnNumber: 15
+                                            lineNumber: 854,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                             className: "input-grid",
@@ -2149,29 +2154,29 @@ function VehicleInspectionPage({ params }) {
                                                             type: "file",
                                                             multiple: true,
                                                             accept: "image/*",
-                                                            onChange: (e)=>handleFileChange('exterior', e)
+                                                            onChange: (e)=>handleFileChange("exterior", e)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 719,
-                                                            columnNumber: 19
+                                                            lineNumber: 860,
+                                                            columnNumber: 10
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                             style: {
-                                                                position: 'static',
-                                                                marginBottom: '0.5rem',
-                                                                display: 'block'
+                                                                position: "static",
+                                                                marginBottom: "0.5rem",
+                                                                display: "block"
                                                             },
                                                             children: "Exterior Photos"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 720,
-                                                            columnNumber: 19
+                                                            lineNumber: 866,
+                                                            columnNumber: 10
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 718,
-                                                    columnNumber: 17
+                                                    lineNumber: 859,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "input-group",
@@ -2180,29 +2185,29 @@ function VehicleInspectionPage({ params }) {
                                                             type: "file",
                                                             multiple: true,
                                                             accept: "image/*",
-                                                            onChange: (e)=>handleFileChange('problemAreas', e)
+                                                            onChange: (e)=>handleFileChange("problemAreas", e)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 723,
-                                                            columnNumber: 19
+                                                            lineNumber: 877,
+                                                            columnNumber: 10
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                             style: {
-                                                                position: 'static',
-                                                                marginBottom: '0.5rem',
-                                                                display: 'block'
+                                                                position: "static",
+                                                                marginBottom: "0.5rem",
+                                                                display: "block"
                                                             },
                                                             children: "Problem Areas"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 724,
-                                                            columnNumber: 19
+                                                            lineNumber: 883,
+                                                            columnNumber: 10
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 722,
-                                                    columnNumber: 17
+                                                    lineNumber: 876,
+                                                    columnNumber: 9
                                                 }, this),
                                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                                     className: "input-group",
@@ -2211,41 +2216,41 @@ function VehicleInspectionPage({ params }) {
                                                             type: "file",
                                                             multiple: true,
                                                             accept: ".pdf,image/*",
-                                                            onChange: (e)=>handleFileChange('documents', e)
+                                                            onChange: (e)=>handleFileChange("documents", e)
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 727,
-                                                            columnNumber: 19
+                                                            lineNumber: 894,
+                                                            columnNumber: 10
                                                         }, this),
                                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
                                                             style: {
-                                                                position: 'static',
-                                                                marginBottom: '0.5rem',
-                                                                display: 'block'
+                                                                position: "static",
+                                                                marginBottom: "0.5rem",
+                                                                display: "block"
                                                             },
                                                             children: "Service Documents"
                                                         }, void 0, false, {
                                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                                            lineNumber: 728,
-                                                            columnNumber: 19
+                                                            lineNumber: 900,
+                                                            columnNumber: 10
                                                         }, this)
                                                     ]
                                                 }, void 0, true, {
                                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                                    lineNumber: 726,
-                                                    columnNumber: 17
+                                                    lineNumber: 893,
+                                                    columnNumber: 9
                                                 }, this)
                                             ]
                                         }, void 0, true, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 717,
-                                            columnNumber: 15
+                                            lineNumber: 858,
+                                            columnNumber: 8
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 712,
-                                    columnNumber: 13
+                                    lineNumber: 853,
+                                    columnNumber: 7
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                                     className: "form-actions",
@@ -2256,8 +2261,8 @@ function VehicleInspectionPage({ params }) {
                                             children: "Save Draft"
                                         }, void 0, false, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 734,
-                                            columnNumber: 15
+                                            lineNumber: 914,
+                                            columnNumber: 8
                                         }, this),
                                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
                                             type: "submit",
@@ -2269,11 +2274,11 @@ function VehicleInspectionPage({ params }) {
                                                         className: "fa-solid fa-spinner fa-spin"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/vehicle/[id]/page.js",
-                                                        lineNumber: 738,
-                                                        columnNumber: 21
+                                                        lineNumber: 924,
+                                                        columnNumber: 11
                                                     }, this),
                                                     " ",
-                                                    loadingStep || 'Processing...'
+                                                    loadingStep || "Processing..."
                                                 ]
                                             }, void 0, true) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["Fragment"], {
                                                 children: [
@@ -2282,44 +2287,44 @@ function VehicleInspectionPage({ params }) {
                                                         className: "fa-solid fa-check"
                                                     }, void 0, false, {
                                                         fileName: "[project]/app/vehicle/[id]/page.js",
-                                                        lineNumber: 742,
-                                                        columnNumber: 35
+                                                        lineNumber: 929,
+                                                        columnNumber: 25
                                                     }, this)
                                                 ]
                                             }, void 0, true)
                                         }, void 0, false, {
                                             fileName: "[project]/app/vehicle/[id]/page.js",
-                                            lineNumber: 735,
-                                            columnNumber: 15
+                                            lineNumber: 917,
+                                            columnNumber: 8
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/app/vehicle/[id]/page.js",
-                                    lineNumber: 733,
-                                    columnNumber: 13
+                                    lineNumber: 913,
+                                    columnNumber: 7
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/app/vehicle/[id]/page.js",
-                            lineNumber: 342,
-                            columnNumber: 11
+                            lineNumber: 390,
+                            columnNumber: 6
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/app/vehicle/[id]/page.js",
-                    lineNumber: 336,
-                    columnNumber: 9
+                    lineNumber: 384,
+                    columnNumber: 5
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/app/vehicle/[id]/page.js",
-            lineNumber: 289,
-            columnNumber: 7
+            lineNumber: 318,
+            columnNumber: 4
         }, this)
     }, void 0, false, {
         fileName: "[project]/app/vehicle/[id]/page.js",
-        lineNumber: 288,
-        columnNumber: 5
+        lineNumber: 317,
+        columnNumber: 3
     }, this);
 }
 }),
