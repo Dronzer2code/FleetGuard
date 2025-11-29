@@ -23,9 +23,15 @@
   "homepage": "https://github.com/Dronzer2code/FleetGuard#readme",
   "dependencies": {
     "@google/generative-ai": "^0.24.1",
+    "@types/nodemailer": "^7.0.4",
     "firebase": "^12.6.0",
     "next": "^16.0.4",
+    "nodemailer": "^7.0.11",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "19.2.7",
+    "typescript": "5.9.3"
   }
 }

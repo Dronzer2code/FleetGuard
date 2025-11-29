@@ -13,6 +13,19 @@ export default function AnalysisResultPage({ params }) {
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const [data, setData] = useState(null);
+	const [showRepairModal, setShowRepairModal] = useState(false);
+	const [repairForm, setRepairForm] = useState({
+		driverEmail: '',
+		managerEmail: '',
+		repairDate: '',
+		useDefaultEmail: true,
+	});
+	const [schedulingRepair, setSchedulingRepair] = useState(false);
+
+	// Debug: Log when modal state changes
+	useEffect(() => {
+		console.log('showRepairModal changed to:', showRepairModal);
+	}, [showRepairModal]);
 
 	useEffect(() => {
 		const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
@@ -20,6 +33,10 @@ export default function AnalysisResultPage({ params }) {
 				router.push("/login");
 			} else {
 				setUser(currentUser);
+				setRepairForm(prev => ({
+					...prev,
+					driverEmail: currentUser.email || '',
+				}));
 				fetchInspectionData(currentUser);
 			}
 		});
@@ -71,6 +88,92 @@ export default function AnalysisResultPage({ params }) {
 		if (score >= 80) return "var(--color-success)";
 		if (score >= 50) return "var(--color-warning)";
 		return "var(--color-danger)";
+	};
+
+	const getSuggestedRepairDate = () => {
+		if (!analysis?.criticalIssues) return '';
+		
+		const hasCritical = analysis.criticalIssues.some(
+			issue => issue.severity === 'CRITICAL' || issue.priority === 1
+		);
+		
+		const today = new Date();
+		let daysToAdd = 7; // Default: 1 week
+		
+		if (hasCritical) {
+			daysToAdd = 1; // Tomorrow for critical
+		} else if (healthScore < 50) {
+			daysToAdd = 3; // 3 days for poor health
+		} else if (healthScore < 80) {
+			daysToAdd = 7; // 1 week for moderate health
+		} else {
+			daysToAdd = 14; // 2 weeks for good health
+		}
+		
+		const suggestedDate = new Date(today);
+		suggestedDate.setDate(today.getDate() + daysToAdd);
+		return suggestedDate.toISOString().split('T')[0];
+	};
+
+	const handleScheduleRepair = () => {
+		console.log('Schedule Repair button clicked!');
+		console.log('User:', user);
+		console.log('Analysis:', analysis);
+		const suggestedDate = getSuggestedRepairDate();
+		console.log('Suggested date:', suggestedDate);
+		setRepairForm(prev => ({
+			...prev,
+			repairDate: suggestedDate,
+			driverEmail: prev.useDefaultEmail ? (user?.email || '') : prev.driverEmail,
+		}));
+		console.log('Opening modal...');
+		setShowRepairModal(true);
+	};
+
+	const handleRepairSubmit = async (e) => {
+		e.preventDefault();
+		setSchedulingRepair(true);
+
+		try {
+			// Determine damage level from analysis
+			let damageLevel = 'MEDIUM';
+			if (healthScore < 40) damageLevel = 'CRITICAL';
+			else if (healthScore < 60) damageLevel = 'HIGH';
+			else if (healthScore >= 80) damageLevel = 'LOW';
+
+			// Build report details from critical issues
+			const reportDetails = analysis.criticalIssues
+				?.map(issue => `- ${issue.title}: ${issue.description}`)
+				.join('\n') || 'See full analysis report';
+
+			const response = await fetch('/api/repairs', {
+				method: 'POST',
+				headers: { 'Content-Type': 'application/json' },
+				body: JSON.stringify({
+					vehicleId: `${vehicleName} (${licensePlate})`,
+					driverEmail: repairForm.useDefaultEmail ? user.email : repairForm.driverEmail,
+					managerEmail: repairForm.managerEmail || undefined,
+					damageLevel,
+					repairDate: repairForm.repairDate,
+					reportDetails,
+					inspectionId,
+				}),
+			});
+
+			const result = await response.json();
+
+			if (response.ok) {
+				alert('✅ Repair scheduled successfully! Calendar invite sent to email.');
+				setShowRepairModal(false);
+			} else {
+				alert(`❌ Failed to schedule repair: ${result.error || 'Unknown error'}`);
+			}
+		} catch (error) {
+			console.error('Error scheduling repair:', error);
+			alert('❌ Failed to schedule repair. Please try again.');
+		} finally {
+			setSchedulingRepair(false);
+		}
 	};
 
 	return (
@@ -136,8 +239,157 @@ export default function AnalysisResultPage({ params }) {
 								</strong>
 							</div>
 						</div>
+						<button 
+							className="btn btn-primary schedule-repair-btn"
+							onClick={handleScheduleRepair}
+							style={{ marginTop: '1.5rem', width: '100%' }}
+						>
+							<i className="fa-solid fa-calendar-plus"></i>
+							Schedule Repair
+						</button>
 					</div>
 				</section>
+
+				{/* Schedule Repair Modal */}
+				{showRepairModal && (
+					<div className="modal-overlay active" onClick={() => setShowRepairModal(false)}>
+						<div className="modal-content" onClick={(e) => e.stopPropagation()}>
+							<div className="modal-header">
+								<h2>Schedule Repair Appointment</h2>
+								<button 
+									className="modal-close" 
+									onClick={() => setShowRepairModal(false)}
+								>
+									<i className="fa-solid fa-xmark"></i>
+								</button>
+							</div>
+							<form onSubmit={handleRepairSubmit} className="repair-form">
+								<div className="form-section-modal">
+									<label className="form-label">
+										<i className="fa-solid fa-user"></i>
+										Driver Email
+									</label>
+									<div className="email-toggle">
+										<label className="toggle-option">
+											<input
+												type="radio"
+												name="emailType"
+												checked={repairForm.useDefaultEmail}
+												onChange={() => setRepairForm(prev => ({
+													...prev,
+													useDefaultEmail: true,
+													driverEmail: user?.email || '',
+												}))}
+											/>
+											<span>Use my email ({user?.email})</span>
+										</label>
+										<label className="toggle-option">
+											<input
+												type="radio"
+												name="emailType"
+												checked={!repairForm.useDefaultEmail}
+												onChange={() => setRepairForm(prev => ({
+													...prev,
+													useDefaultEmail: false,
+												}))}
+											/>
+											<span>Custom email</span>
+										</label>
+									</div>
+									{!repairForm.useDefaultEmail && (
+										<input
+											type="email"
+											className="form-input"
+											value={repairForm.driverEmail}
+											onChange={(e) => setRepairForm(prev => ({
+												...prev,
+												driverEmail: e.target.value,
+											}))}
+											placeholder="driver@example.com"
+											required
+										/>
+									)}
+								</div>
+
+								<div className="form-section-modal">
+									<label className="form-label">
+										<i className="fa-solid fa-user-tie"></i>
+										Manager Email (Optional)
+									</label>
+									<input
+										type="email"
+										className="form-input"
+										value={repairForm.managerEmail}
+										onChange={(e) => setRepairForm(prev => ({
+											...prev,
+											managerEmail: e.target.value,
+										}))}
+										placeholder="manager@example.com"
+									/>
+									<small className="form-hint">
+										Manager will also receive the calendar invite
+									</small>
+								</div>
+
+								<div className="form-section-modal">
+									<label className="form-label">
+										<i className="fa-solid fa-calendar"></i>
+										Repair Date (AI Suggested)
+									</label>
+									<input
+										type="date"
+										className="form-input"
+										value={repairForm.repairDate}
+										onChange={(e) => setRepairForm(prev => ({
+											...prev,
+											repairDate: e.target.value,
+										}))}
+										min={new Date().toISOString().split('T')[0]}
+										required
+									/>
+									<small className="form-hint">
+										{healthScore < 40 
+											? '⚠️ Critical: Suggested within 24 hours'
+											: healthScore < 60
+											? '⚠️ High priority: Suggested within 3 days'
+											: healthScore < 80
+											? 'Medium priority: Suggested within 1 week'
+											: 'Low priority: Suggested within 2 weeks'
+										}
+									</small>
+								</div>
+
+								<div className="modal-actions">
+									<button
+										type="button"
+										className="btn btn-secondary"
+										onClick={() => setShowRepairModal(false)}
+										disabled={schedulingRepair}
+									>
+										Cancel
+									</button>
+									<button
+										type="submit"
+										className="btn btn-primary"
+										disabled={schedulingRepair}
+									>
+										{schedulingRepair ? (
+											<>
+												<i className="fa-solid fa-spinner fa-spin"></i>
+												Sending...
+											</>
+										) : (
+											<>
+												<i className="fa-solid fa-paper-plane"></i>
+												Send Calendar Invite
+											</>
+										)}
+									</button>
+								</div>
+							</form>
+						</div>
+					</div>
+				)}
 
 				{/* Critical Issues Section */}
 				{analysis.criticalIssues?.length > 0 && (
@@ -656,6 +908,156 @@ export default function AnalysisResultPage({ params }) {
 					width: 100%;
 					height: 100%;
 					object-fit: cover;
+				}
+
+				/* Modal Styles */
+				.modal-overlay {
+					position: fixed;
+					inset: 0;
+					background: rgba(15, 23, 42, 0.7);
+					backdrop-filter: blur(4px);
+					display: flex;
+					align-items: center;
+					justify-content: center;
+					z-index: 1000;
+					padding: 1rem;
+					opacity: 1;
+					visibility: visible;
+				}
+				.modal-content {
+					background: var(--bg-surface);
+					border-radius: var(--radius-lg);
+					max-width: 600px;
+					width: 100%;
+					max-height: 90vh;
+					overflow-y: auto;
+					box-shadow: var(--shadow-xl);
+				}
+				.modal-header {
+					display: flex;
+					justify-content: space-between;
+					align-items: center;
+					padding: 1.5rem;
+					border-bottom: 1px solid var(--bg-surface-alt);
+				}
+				.modal-header h2 {
+					font-size: 1.5rem;
+					color: var(--text-heading);
+					margin: 0;
+				}
+				.modal-close {
+					background: none;
+					border: none;
+					font-size: 1.5rem;
+					color: var(--text-light);
+					cursor: pointer;
+					padding: 0.5rem;
+					border-radius: var(--radius-sm);
+					transition: all 0.2s;
+				}
+				.modal-close:hover {
+					background: var(--bg-surface-alt);
+					color: var(--text-heading);
+				}
+				.repair-form {
+					padding: 1.5rem;
+				}
+				.form-section-modal {
+					margin-bottom: 1.5rem;
+				}
+				.form-label {
+					display: flex;
+					align-items: center;
+					gap: 0.5rem;
+					font-weight: 600;
+					color: var(--text-heading);
+					margin-bottom: 0.75rem;
+				}
+				.form-label i {
+					color: var(--color-accent);
+				}
+				.form-input {
+					width: 100%;
+					padding: 0.75rem;
+					border: 1px solid #e2e8f0;
+					border-radius: var(--radius-sm);
+					font-size: 1rem;
+					font-family: inherit;
+					transition: border-color 0.2s;
+				}
+				.form-input:focus {
+					outline: none;
+					border-color: var(--color-accent);
+				}
+				.form-hint {
+					display: block;
+					margin-top: 0.5rem;
+					font-size: 0.875rem;
+					color: var(--text-light);
+				}
+				.email-toggle {
+					display: flex;
+					flex-direction: column;
+					gap: 0.5rem;
+					margin-bottom: 1rem;
+				}
+				.toggle-option {
+					display: flex;
+					align-items: center;
+					gap: 0.5rem;
+					padding: 0.75rem;
+					border: 1px solid #e2e8f0;
+					border-radius: var(--radius-sm);
+					cursor: pointer;
+					transition: all 0.2s;
+				}
+				.toggle-option:hover {
+					background: var(--bg-surface-alt);
+				}
+				.toggle-option input[type="radio"] {
+					cursor: pointer;
+				}
+				.modal-actions {
+					display: flex;
+					gap: 1rem;
+					justify-content: flex-end;
+					padding-top: 1rem;
+					border-top: 1px solid var(--bg-surface-alt);
+				}
+				.btn {
+					display: inline-flex;
+					align-items: center;
+					gap: 0.5rem;
+					padding: 0.75rem 1.5rem;
+					border-radius: var(--radius-sm);
+					font-weight: 600;
+					cursor: pointer;
+					transition: all 0.2s;
+					border: none;
+					font-size: 1rem;
+				}
+				.btn:disabled {
+					opacity: 0.6;
+					cursor: not-allowed;
+				}
+				.btn-primary {
+					background: var(--color-accent);
+					color: white;
+				}
+				.btn-primary:hover:not(:disabled) {
+					background: #4f46e5;
+					transform: translateY(-1px);
+				}
+				.btn-secondary {
+					background: var(--bg-surface-alt);
+					color: var(--text-main);
+				}
+				.btn-secondary:hover:not(:disabled) {
+					background: #e2e8f0;
+				}
+				.schedule-repair-btn {
+					border: none;
+					cursor: pointer;
 				}
 			`}</style>
 		</div>

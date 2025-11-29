@@ -207,26 +207,46 @@ export default function VehicleInspectionPage({ params }) {
       VEHICLE INFORMATION:
       - Vehicle: ${completeData.vehicleName}
       - License Plate: ${completeData.licensePlate}
+      - Inspection Date: ${new Date().toISOString().split('T')[0]}
 
       INSPECTION DATA:
       ${JSON.stringify(completeData, null, 2)}
 
       ANALYZE AND PROVIDE:
-      1. CRITICAL ISSUES (Immediate attention required - safety concerns)
-      2. UPCOMING MAINTENANCE (Attention needed soon - not urgent)
+      1. CRITICAL ISSUES (Immediate attention required - safety concerns) - Include recommended repair timeline
+      2. UPCOMING MAINTENANCE (Attention needed soon - not urgent) - Include suggested dates
       3. ROUTINE/PREVENTIVE MAINTENANCE (Future planning)
       4. SYSTEM HEALTH BREAKDOWN (Engine, Brakes, Electrical, Fluids, Steering, EV)
       5. OVERALL VEHICLE HEALTH SCORE (0-100)
       6. COST SUMMARY (Immediate, Upcoming, Future in INR)
       7. AI INSIGHTS & RECOMMENDATIONS
       8. PRIORITY RANKING
+      9. SUGGESTED REPAIR DATE (Based on severity: CRITICAL = 1 day, HIGH = 3 days, MEDIUM = 7 days, LOW = 14 days)
+
+      IMPORTANT: For each critical issue, suggest a specific repair timeline (e.g., "Within 24 hours", "Within 3 days", "Within 1 week").
+      Consider the overall health score when suggesting repair urgency:
+      - Score < 40: CRITICAL priority, immediate repair needed
+      - Score 40-60: HIGH priority, repair within 3 days
+      - Score 60-80: MEDIUM priority, repair within 1 week
+      - Score > 80: LOW priority, routine maintenance
 
       RESPONSE FORMAT:
       Return ONLY valid JSON with this structure:
       {
         "overallHealthScore": number,
         "vehicleSummary": "string",
-        "criticalIssues": [{ "title": string, "severity": "CRITICAL"|"URGENT", "description": string, "reasoning": string, "estimatedCost": { "min": number, "max": number, "currency": "INR" }, "timeline": string, "affectedComponents": [string], "priority": number }],
+        "suggestedRepairDate": "YYYY-MM-DD (based on most critical issue)",
+        "repairUrgency": "CRITICAL" | "HIGH" | "MEDIUM" | "LOW",
+        "criticalIssues": [{ 
+          "title": string, 
+          "severity": "CRITICAL"|"URGENT"|"HIGH", 
+          "description": string, 
+          "reasoning": string, 
+          "estimatedCost": { "min": number, "max": number, "currency": "INR" }, 
+          "timeline": string (e.g., "Within 24 hours", "Within 3 days"),
+          "affectedComponents": [string], 
+          "priority": number 
+        }],
         "upcomingMaintenance": [...],
         "routineMaintenance": [...],
         "systemHealth": {
@@ -237,7 +257,12 @@ export default function VehicleInspectionPage({ params }) {
           "steering": { ... },
           "ev": { ... }
         },
-        "costSummary": { "immediate": { "min": number, "max": number }, "upcoming": { "min": number, "max": number }, "future": { "min": number, "max": number }, "total": { "min": number, "max": number } },
+        "costSummary": { 
+          "immediate": { "min": number, "max": number }, 
+          "upcoming": { "min": number, "max": number }, 
+          "future": { "min": number, "max": number }, 
+          "total": { "min": number, "max": number } 
+        },
         "aiInsights": [{ "type": string, "title": string, "description": string }],
         "priorityRanking": [{ "rank": number, "issueTitle": string, "category": string }]
       }
